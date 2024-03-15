@@ -122,11 +122,11 @@ export default class Widget {
 	byTouchMove(event) {
 		console.log(event.targetTouches[0].clientY, event.view.innerHeight);
 
-		if (event.targetTouches[0].clientX <= 50) {
+		if (event.targetTouches[0].clientX <= 25) {
 			this.render.boards.scrollBy(-25, 0);
 		}
 
-		if (event.targetTouches[0].clientX >= event.view.innerWidth - 75) {
+		if (event.targetTouches[0].clientX >= event.view.innerWidth - 25) {
 			this.render.boards.scrollBy(25, 0);
 		}
 
