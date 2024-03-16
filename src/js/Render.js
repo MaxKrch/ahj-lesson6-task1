@@ -276,8 +276,8 @@ export default class Render {
 		taskLi.dataset.id = task.id;
 		taskLi.dataset.board = tag;
 		taskLi.innerHTML = `
-			<article class="task-item" data-board="${tag}">
-				<h3 class="task-item__title">
+			<article class="task-item" data-id="${task.id}" data-board="${tag}">
+				<h3 class="task-item__title" data-id="${task.id}" data-board="${tag}">
 					${task.title}
 				</h3>
 				
@@ -285,11 +285,11 @@ export default class Render {
 					Open Task
 				</button>
 				
-				<div class="button-inline-block">
+				<div class="button-inline-block" data-id="${task.id}" data-board="${tag}">
 					<div class="button-inline task-item__delete" data-id="${task.id}" data-board="${tag}">
 						&times;
 					</div>
-					<div class="button-inline task-item__option">
+					<div class="button-inline task-item__option" data-id="${task.id}" data-board="${tag}">
 						&hellip;
 					</div>
 				</div>
@@ -682,9 +682,20 @@ export default class Render {
 		};
 
 		if (tagBoard !== tagTask) {
-			selected.dataset.board = tagBoard;
+			this.upgradeTagBoard(tagBoard);
 		}
 
 		return updateData;
+	}
+
+	upgradeTagBoard(newTag) {
+		const selected = this.movingItems.selected;
+		
+		selected.dataset.board = newTag;
+		selected.querySelector(".task-item__title").dataset.board = newTag;
+		selected.querySelector(".task-item-button__open").dataset.board = newTag;
+		selected.querySelector(".button-inline-block").dataset.board = newTag;
+		selected.querySelector(".task-item__delete").dataset.board = newTag;
+		selected.querySelector(".task-item__option").dataset.board = newTag;
 	}
 }
