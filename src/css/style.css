@@ -220,13 +220,13 @@
 }
 
 .newtask-openform {
-	padding: 5px 5px;
+	padding: 3px 5px;
 	font-weight: 700;
 	font-size: 1.1rem;
 	cursor: pointer;
 	border-radius: 5px;
 	max-width: 155px;
-	margin: 5px 0;
+	margin: 3px 0;
 }
 
 .newtask-mark {
