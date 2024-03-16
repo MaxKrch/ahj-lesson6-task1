@@ -104,6 +104,7 @@ export default class Widget {
 
 	byTouchStart(event) {
 		this.touch = setTimeout(() => {
+			window.navigator.vibrate(100);
 			const classes = event.target.classList;
 			if (classes.contains("task-item-button__open") || classes.contains("task-item__delete") || classes.contains("task-item__option")) {
 				return;

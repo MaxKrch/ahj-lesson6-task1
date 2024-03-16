@@ -108,6 +108,9 @@ export default class Render {
 			this.touchListeners.start.forEach((item) => item(event));
 		});
 		document.addEventListener("touchmove", (event) => {
+			if(this.activeTouch) {
+				event.preventDefault()
+			}
 			this.touchListeners.move.forEach((item) => item(event));
 		});
 		document.addEventListener("touchend", (event) => {
